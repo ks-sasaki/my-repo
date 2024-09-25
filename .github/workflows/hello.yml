@@ -1,8 +1,8 @@
-name: Hello
+name: Dev Infra Check
 on: push
 jobs:
-	hello:
-		runs-on: ubuntu-latest
-		steps:
-			-run: echo "Hello, world"
-			-uses: actions/checkout@v4
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello, World!"
+			- uses: actions/checkout@v4
