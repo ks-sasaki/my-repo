@@ -2,6 +2,9 @@ name: Test
 on:
   pull_request:
     paths: ['go/**/.go'] # Goファイル変更時のみ
+concurrency:    #　自動キャンセル
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   go-test:
     runs-on: ubuntu-latest
@@ -11,3 +14,9 @@ jobs:
         with:
           go-version: '1.22'
       - run: go test go/exellent/*.go # test実行
+  print-workflow-env:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "{group}"
+    env:
+      group: ${{ github.workflow }}-${{ github.ref }}
