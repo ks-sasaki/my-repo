@@ -1,0 +1,14 @@
+name: Test
+on:
+  pull_request:
+    paths:
+      - ['go/**/.go'] # Goファイル変更時のみ
+jobs:
+  go-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4 # チェックアウト(リポジトリのコードを取得)
+      - uses: actions/setup-go@v5 # Go言語セットアップ
+        with:
+          go-version: '1.22'
+      - run: go test go/exellent/*.go # test実行
