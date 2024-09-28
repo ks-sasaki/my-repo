@@ -1,8 +1,7 @@
 name: Test
 on:
   pull_request:
-    paths:
-      - ['go/**/.go'] # Goファイル変更時のみ
+    paths: ['go/**/.go'] # Goファイル変更時のみ
 jobs:
   go-test:
     runs-on: ubuntu-latest
